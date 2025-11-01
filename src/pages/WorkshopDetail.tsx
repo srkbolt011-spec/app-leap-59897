@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, useSearchParams } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
+import { BackButton } from '@/components/BackButton';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -83,9 +84,12 @@ export default function WorkshopDetail() {
   const isEnrolled = user && workshop.enrolledStudents.includes(user.id);
 
   return (
-    <div className="min-h-screen bg-background pb-20">
+    <div className="min-h-screen bg-background pb-[calc(5rem+var(--sab))]">
       <div className="w-full px-4 py-6">
         <div className="w-full space-y-4">
+          {/* Back Button */}
+          <BackButton />
+          
           {/* Workshop Header */}
           <div>
             <Badge className="mb-3 text-xs">{workshop.category}</Badge>
@@ -174,9 +178,11 @@ export default function WorkshopDetail() {
 
           {/* Certificate Section */}
           {certificate && (
-            <div className="my-4">
-              <CertificateComponent certificate={certificate} />
-            </div>
+            <Card>
+              <CardContent className="p-3">
+                <CertificateComponent certificate={certificate} />
+              </CardContent>
+            </Card>
           )}
 
           {/* About Workshop */}

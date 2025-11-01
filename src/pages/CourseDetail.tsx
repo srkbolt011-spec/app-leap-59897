@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { BackButton } from '@/components/BackButton';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Textarea } from '@/components/ui/textarea';
@@ -220,8 +221,8 @@ export default function CourseDetail() {
   const instructorColor = getAvatarColor(course.instructorName);
 
   return (
-    <div className="w-full pb-20">
-      <div className="flex flex-col gap-4">
+    <div className="w-full pb-[calc(5rem+var(--sab))]">
+      <div className="flex flex-col">
         {/* Video Player */}
         {lessons.length > 0 && (
           <div className="aspect-video bg-black w-full">
@@ -234,7 +235,9 @@ export default function CourseDetail() {
           </div>
         )}
 
-        <div className="px-4 space-y-4">
+        <div className="px-4 pt-2 space-y-4">
+          {/* Back Button */}
+          <BackButton />
 
           {/* Enroll Button */}
           {!isEnrolled && (

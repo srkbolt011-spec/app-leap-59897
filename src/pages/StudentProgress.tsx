@@ -109,7 +109,7 @@ export default function StudentProgress() {
   };
 
   return (
-    <div className="w-full px-4 py-6 pb-20">
+    <div className="w-full px-4 py-6 pb-[calc(5rem+var(--sab))]">
       <div className="mb-6">
         <h1 className="text-2xl font-bold mb-1">My Progress</h1>
         <p className="text-sm text-muted-foreground">Track your learning journey</p>
@@ -117,47 +117,47 @@ export default function StudentProgress() {
 
       {/* Stats Overview */}
       <div className="grid grid-cols-2 gap-3 mb-6">
-        <Card className="active:scale-95 transition-transform">
+        <Card className="active:scale-95 transition-transform overflow-hidden">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 p-3 pb-2">
-            <CardTitle className="text-xs font-medium">Streak</CardTitle>
-            <Flame className="h-4 w-4 text-orange-500" />
+            <CardTitle className="text-xs font-medium truncate">Streak</CardTitle>
+            <Flame className="h-4 w-4 text-orange-500 flex-shrink-0" />
           </CardHeader>
           <CardContent className="p-3 pt-0">
-            <div className="text-xl font-bold">{progress[0]?.currentStreak || 0}</div>
-            <p className="text-xs text-muted-foreground">days</p>
+            <div className="text-xl font-bold truncate">{progress[0]?.currentStreak || 0}</div>
+            <p className="text-xs text-muted-foreground truncate">days</p>
           </CardContent>
         </Card>
 
-        <Card className="active:scale-95 transition-transform">
+        <Card className="active:scale-95 transition-transform overflow-hidden">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 p-3 pb-2">
-            <CardTitle className="text-xs font-medium">Time</CardTitle>
-            <Clock className="h-4 w-4 text-muted-foreground" />
+            <CardTitle className="text-xs font-medium truncate">Time</CardTitle>
+            <Clock className="h-4 w-4 text-muted-foreground flex-shrink-0" />
           </CardHeader>
           <CardContent className="p-3 pt-0">
-            <div className="text-xl font-bold">{formatTimeSpent(totalTimeSpent)}</div>
-            <p className="text-xs text-muted-foreground">learning</p>
+            <div className="text-xl font-bold truncate">{formatTimeSpent(totalTimeSpent)}</div>
+            <p className="text-xs text-muted-foreground truncate">learning</p>
           </CardContent>
         </Card>
 
-        <Card className="active:scale-95 transition-transform">
+        <Card className="active:scale-95 transition-transform overflow-hidden">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 p-3 pb-2">
-            <CardTitle className="text-xs font-medium">Lessons</CardTitle>
-            <CheckCircle2 className="h-4 w-4 text-muted-foreground" />
+            <CardTitle className="text-xs font-medium truncate">Lessons</CardTitle>
+            <CheckCircle2 className="h-4 w-4 text-muted-foreground flex-shrink-0" />
           </CardHeader>
           <CardContent className="p-3 pt-0">
-            <div className="text-xl font-bold">{totalLessonsCompleted}</div>
-            <p className="text-xs text-muted-foreground">of {totalLessons}</p>
+            <div className="text-xl font-bold truncate">{totalLessonsCompleted}</div>
+            <p className="text-xs text-muted-foreground truncate">of {totalLessons}</p>
           </CardContent>
         </Card>
 
-        <Card className="active:scale-95 transition-transform">
+        <Card className="active:scale-95 transition-transform overflow-hidden">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 p-3 pb-2">
-            <CardTitle className="text-xs font-medium">Courses</CardTitle>
-            <BookOpen className="h-4 w-4 text-muted-foreground" />
+            <CardTitle className="text-xs font-medium truncate">Courses</CardTitle>
+            <BookOpen className="h-4 w-4 text-muted-foreground flex-shrink-0" />
           </CardHeader>
           <CardContent className="p-3 pt-0">
-            <div className="text-xl font-bold">{progress.length}</div>
-            <p className="text-xs text-muted-foreground">{completedCourses.length} done</p>
+            <div className="text-xl font-bold truncate">{progress.length}</div>
+            <p className="text-xs text-muted-foreground truncate">{completedCourses.length} done</p>
           </CardContent>
         </Card>
       </div>
@@ -178,9 +178,9 @@ export default function StudentProgress() {
                 .map(achievementId => {
                   const achievement = getAchievementDetails(achievementId);
                   return (
-                    <div key={achievementId} className="text-center p-2 rounded-lg bg-accent/50">
+                    <div key={achievementId} className="text-center p-2 rounded-lg bg-muted/50 border border-border overflow-hidden">
                       <div className="text-2xl mb-1">{achievement.icon}</div>
-                      <h4 className="font-semibold text-xs mb-0.5">{achievement.title}</h4>
+                      <h4 className="font-semibold text-xs mb-0.5 truncate">{achievement.title}</h4>
                       <p className="text-xs text-muted-foreground line-clamp-2">{achievement.description}</p>
                     </div>
                   );
@@ -207,12 +207,12 @@ export default function StudentProgress() {
         <TabsContent value="in-progress" className="space-y-3">
           {inProgressCourses.length === 0 ? (
             <Card>
-              <CardContent className="py-8 text-center text-muted-foreground">
-                <BookOpen className="h-10 w-10 mx-auto mb-2 opacity-50" />
-                <p className="text-sm">No courses in progress</p>
+              <CardContent className="py-8 text-center">
+                <BookOpen className="h-10 w-10 mx-auto mb-2 opacity-50 text-muted-foreground" />
+                <p className="text-sm text-muted-foreground">No courses in progress</p>
                 <Button 
                   variant="outline" 
-                  className="mt-3 text-sm h-10"
+                  className="mt-3 text-sm touch-target"
                   onClick={() => navigate('/courses')}
                 >
                   Browse Courses

@@ -144,7 +144,7 @@ export default function StudentWorkshops() {
   };
 
   return (
-    <div className="min-h-screen bg-background pb-20">
+    <div className="min-h-screen bg-background pb-[calc(5rem+var(--sab))]">
       <div className="w-full px-4 py-6">
         <div className="mb-6">
           <h1 className="text-2xl font-bold mb-1">Workshops</h1>

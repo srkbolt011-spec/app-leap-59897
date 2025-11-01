@@ -45,7 +45,7 @@ export default function Profile() {
   if (!user) return null;
 
   return (
-    <div className="w-full px-4 py-6 pb-20">
+    <div className="w-full px-4 py-6 pb-[calc(5rem+var(--sab))]">
       <div className="w-full max-w-2xl mx-auto">
         <div className="text-center mb-6">
           <Avatar className="h-20 w-20 mx-auto mb-3" style={{ backgroundColor: avatarColor }}>
