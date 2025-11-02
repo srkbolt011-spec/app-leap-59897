@@ -9,6 +9,8 @@ import { getCourseLessons } from '@/lib/lessonManager';
 import { Search, Users as UsersIcon, Clock } from 'lucide-react';
 import { getAvatarColor } from '@/lib/avatarColors';
 import { Badge } from '@/components/ui/badge';
+import { OptimizedImage } from '@/components/OptimizedImage';
+import { SkeletonList } from '@/components/SkeletonList';
 
 interface CourseWithStats extends Course {
   enrollmentCount: number;
@@ -65,11 +67,13 @@ export default function Courses() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-background via-muted/20 to-background">
-        <div className="container mx-auto px-4 py-12">
-          <div className="text-center">
-            <p className="text-xl text-muted-foreground">Loading courses...</p>
+      <div className="min-h-screen bg-gradient-to-b from-background via-muted/20 to-background pb-[calc(5rem+var(--sab))]">
+        <div className="w-full px-4 py-6">
+          <div className="mb-6 text-center">
+            <h1 className="text-2xl font-display font-bold mb-2 text-gradient">Course Catalog</h1>
+            <p className="text-sm text-muted-foreground">Browse available courses</p>
           </div>
+          <SkeletonList count={4} />
         </div>
       </div>
     );
@@ -118,11 +122,11 @@ export default function Courses() {
                 onClick={() => navigate(`/course/${course.id}`)}
               >
                 <div className="relative overflow-hidden">
-                  <img 
-                    src={course.thumbnail} 
+                  <OptimizedImage 
+                    src={course.thumbnail}
                     alt={course.title}
-                    className="w-full h-40 object-cover transition-transform group-active:scale-105"
-                    loading="lazy"
+                    className="w-full h-40 transition-transform group-active:scale-105"
+                    aspectRatio="16/9"
                   />
                   <div className="absolute top-3 right-3">
                     <Badge className="bg-primary text-primary-foreground shadow-lg border-0 text-xs">
