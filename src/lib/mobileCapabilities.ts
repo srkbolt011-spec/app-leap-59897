@@ -39,6 +39,18 @@ export const initializeMobileCapabilities = async () => {
     // Monitor network status
     Network.addListener('networkStatusChange', status => {
       console.log('Network status changed', status);
+      
+      // Dispatch custom event for network status changes
+      window.dispatchEvent(new CustomEvent('networkStatusChange', { 
+        detail: status 
+      }));
+      
+      // Update online/offline status
+      if (status.connected) {
+        window.dispatchEvent(new Event('online'));
+      } else {
+        window.dispatchEvent(new Event('offline'));
+      }
     });
 
     // Listen for theme changes

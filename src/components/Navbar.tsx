@@ -6,6 +6,7 @@ import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { getAvatarColor } from '@/lib/avatarColors';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { NotificationCenter } from '@/components/NotificationCenter';
+import { NetworkStatus } from '@/components/NetworkStatus';
 
 export function Navbar() {
   const { user, logout } = useAuth();
@@ -47,6 +48,7 @@ export function Navbar() {
         <div className="w-full px-4 h-14 flex items-center justify-between">
           <span className="text-lg font-display font-bold">LearnFlow</span>
           <div className="flex items-center gap-1">
+            <NetworkStatus />
             <ThemeToggle />
             <NotificationCenter />
           </div>
